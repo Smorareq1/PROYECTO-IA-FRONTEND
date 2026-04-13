@@ -1,0 +1,141 @@
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  darkMode: 'class',
+  content: [
+    './index.html',
+    './src/**/*.{vue,js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: 'var(--ds-primary-50)',
+          100: 'var(--ds-primary-100)',
+          200: 'var(--ds-primary-200)',
+          300: 'var(--ds-primary-300)',
+          400: 'var(--ds-primary-400)',
+          500: 'var(--ds-primary-500)',
+          600: 'var(--ds-primary-600)',
+          700: 'var(--ds-primary-700)',
+          800: 'var(--ds-primary-800)',
+          900: 'var(--ds-primary-900)',
+          DEFAULT: 'var(--ds-primary-500)',
+        },
+        neutral: {
+          50: 'var(--ds-neutral-50)',
+          100: 'var(--ds-neutral-100)',
+          200: 'var(--ds-neutral-200)',
+          300: 'var(--ds-neutral-300)',
+          400: 'var(--ds-neutral-400)',
+          500: 'var(--ds-neutral-500)',
+          600: 'var(--ds-neutral-600)',
+          700: 'var(--ds-neutral-700)',
+          800: 'var(--ds-neutral-800)',
+          900: 'var(--ds-neutral-900)',
+        },
+        success: 'var(--ds-success)',
+        warning: 'var(--ds-warning)',
+        danger: 'var(--ds-danger)',
+        info: 'var(--ds-info)',
+        surface: {
+          DEFAULT: 'var(--ds-surface)',
+          raised: 'var(--ds-surface-raised)',
+          overlay: 'var(--ds-surface-overlay)',
+        },
+        border: 'var(--ds-border)',
+        'text-primary': 'var(--ds-text-primary)',
+        'text-secondary': 'var(--ds-text-secondary)',
+        'text-muted': 'var(--ds-text-muted)',
+        // Category colors
+        'cat-soporte': 'var(--ds-cat-soporte)',
+        'cat-facturacion': 'var(--ds-cat-facturacion)',
+        'cat-consulta': 'var(--ds-cat-consulta)',
+        'cat-queja': 'var(--ds-cat-queja)',
+        'cat-cancelacion': 'var(--ds-cat-cancelacion)',
+      },
+      fontFamily: {
+        sans: ['Inter', 'IBM Plex Sans', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'IBM Plex Mono', 'monospace'],
+      },
+      fontSize: {
+        'ds-xs': ['0.75rem', { lineHeight: '1rem' }],
+        'ds-sm': ['0.8125rem', { lineHeight: '1.25rem' }],
+        'ds-base': ['0.875rem', { lineHeight: '1.375rem' }],
+        'ds-lg': ['1rem', { lineHeight: '1.5rem' }],
+        'ds-xl': ['1.125rem', { lineHeight: '1.75rem' }],
+        'ds-2xl': ['1.5rem', { lineHeight: '2rem' }],
+        'ds-3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        'ds-4xl': ['2.25rem', { lineHeight: '2.75rem' }],
+        'ds-5xl': ['3rem', { lineHeight: '3.5rem' }],
+      },
+      spacing: {
+        '0.5': '2px',
+        '1': '4px',
+        '2': '8px',
+        '3': '12px',
+        '4': '16px',
+        '5': '20px',
+        '6': '24px',
+        '8': '32px',
+        '10': '40px',
+        '12': '48px',
+        '16': '64px',
+        '24': '96px',
+      },
+      borderRadius: {
+        'ds-sm': '4px',
+        'ds-md': '6px',
+        'ds-lg': '8px',
+        'ds-xl': '12px',
+      },
+      boxShadow: {
+        'ds-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'ds-md': '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05)',
+        'ds-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04)',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.3s ease-out',
+        'slide-up': 'slideUp 0.4s ease-out',
+        'slide-down': 'slideDown 0.3s ease-out',
+        'scale-in': 'scaleIn 0.2s ease-out',
+        'bar-fill': 'barFill 0.8s ease-out forwards',
+        'pulse-soft': 'pulseSoft 2s infinite',
+        'shimmer': 'shimmer 1.5s infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(16px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideDown: {
+          '0%': { opacity: '0', transform: 'translateY(-8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        barFill: {
+          '0%': { width: '0%' },
+          '100%': { width: 'var(--bar-width)' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+      },
+    },
+  },
+  plugins: [],
+}
+
+export default config

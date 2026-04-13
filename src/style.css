@@ -1,0 +1,107 @@
+/* ============================================================
+   Main Styles — Entry Point
+   Tailwind directives + design system tokens import
+   ============================================================ */
+
+@import './design-system/tokens/index.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Base Styles ---- */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: var(--ds-font-sans);
+    font-size: 16px;
+    line-height: var(--ds-leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--ds-surface);
+    color: var(--ds-text-primary);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: var(--ds-primary-200);
+    color: var(--ds-primary-900);
+  }
+
+  .dark ::selection {
+    background-color: var(--ds-primary-700);
+    color: var(--ds-primary-100);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--ds-neutral-300);
+    border-radius: var(--ds-radius-full);
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: var(--ds-neutral-600);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--ds-neutral-400);
+  }
+}
+
+/* ---- Component Layer ---- */
+@layer components {
+  /* Skeleton loader */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--ds-neutral-100) 25%,
+      var(--ds-neutral-200) 50%,
+      var(--ds-neutral-100) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--ds-radius-md);
+  }
+
+  .dark .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--ds-neutral-200) 25%,
+      var(--ds-neutral-300) 50%,
+      var(--ds-neutral-200) 75%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* Focus ring utility */
+  .focus-ring {
+    @apply outline-none ring-2 ring-primary-400 ring-offset-2;
+  }
+
+  .dark .focus-ring {
+    @apply ring-offset-neutral-900;
+  }
+}

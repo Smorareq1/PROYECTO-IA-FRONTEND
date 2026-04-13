@@ -1,0 +1,10 @@
+/* ============================================================
+   Design System — Token Index
+   Single import point for all design tokens
+   ============================================================ */
+
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './radius.css';
+@import './shadows.css';

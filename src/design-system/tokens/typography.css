@@ -1,0 +1,41 @@
+/* ============================================================
+   Design System — Typography Tokens
+   Inter + IBM Plex Sans / JetBrains Mono
+   Fonts loaded via <link> in index.html
+   ============================================================ */
+
+:root {
+  /* ---- Font families ---- */
+  --ds-font-sans: 'Inter', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --ds-font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code', monospace;
+
+  /* ---- Font sizes ---- */
+  --ds-text-xs:   0.75rem;    /* 12px */
+  --ds-text-sm:   0.8125rem;  /* 13px */
+  --ds-text-base: 0.875rem;   /* 14px */
+  --ds-text-lg:   1rem;       /* 16px */
+  --ds-text-xl:   1.125rem;   /* 18px */
+  --ds-text-2xl:  1.5rem;     /* 24px */
+  --ds-text-3xl:  1.875rem;   /* 30px */
+  --ds-text-4xl:  2.25rem;    /* 36px */
+  --ds-text-5xl:  3rem;       /* 48px */
+
+  /* ---- Line heights ---- */
+  --ds-leading-tight:  1.25;
+  --ds-leading-normal: 1.5;
+  --ds-leading-relaxed: 1.625;
+
+  /* ---- Font weights ---- */
+  --ds-weight-light:    300;
+  --ds-weight-regular:  400;
+  --ds-weight-medium:   500;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold:     700;
+  --ds-weight-extrabold: 800;
+
+  /* ---- Letter spacing ---- */
+  --ds-tracking-tight:  -0.025em;
+  --ds-tracking-normal: 0;
+  --ds-tracking-wide:   0.025em;
+  --ds-tracking-wider:  0.05em;
+}

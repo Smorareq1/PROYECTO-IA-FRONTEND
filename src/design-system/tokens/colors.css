@@ -1,0 +1,104 @@
+/* ============================================================
+   Design System — Color Tokens
+   Paleta corporativa IBM / Atlassian
+   ============================================================ */
+
+:root {
+  /* ---- Primary (IBM Blue scale) ---- */
+  --ds-primary-50:  #EDF5FF;
+  --ds-primary-100: #D0E2FF;
+  --ds-primary-200: #A6C8FF;
+  --ds-primary-300: #78A9FF;
+  --ds-primary-400: #4589FF;
+  --ds-primary-500: #0F62FE;
+  --ds-primary-600: #0353E9;
+  --ds-primary-700: #0043CE;
+  --ds-primary-800: #002D9C;
+  --ds-primary-900: #001D6C;
+
+  /* ---- Neutrals (warm gray) ---- */
+  --ds-neutral-50:  #F4F4F4;
+  --ds-neutral-100: #E8E8E8;
+  --ds-neutral-200: #D1D1D6;
+  --ds-neutral-300: #A8A8A8;
+  --ds-neutral-400: #8D8D8D;
+  --ds-neutral-500: #6F6F6F;
+  --ds-neutral-600: #525252;
+  --ds-neutral-700: #393939;
+  --ds-neutral-800: #262626;
+  --ds-neutral-900: #161616;
+
+  /* ---- Semantic ---- */
+  --ds-success:  #198038;
+  --ds-warning:  #F1C21B;
+  --ds-danger:   #DA1E28;
+  --ds-info:     #0043CE;
+
+  /* ---- Surface & Text (Light mode) ---- */
+  --ds-surface:        #FFFFFF;
+  --ds-surface-raised: #F8F9FA;
+  --ds-surface-overlay: rgba(0, 0, 0, 0.5);
+  --ds-border:         #E0E0E0;
+  --ds-text-primary:   #161616;
+  --ds-text-secondary: #525252;
+  --ds-text-muted:     #8D8D8D;
+
+  /* ---- Category badge colors ---- */
+  --ds-cat-soporte:      #0F62FE;
+  --ds-cat-facturacion:  #8A3FFC;
+  --ds-cat-consulta:     #009D9A;
+  --ds-cat-queja:        #DA1E28;
+  --ds-cat-cancelacion:  #EB6200;
+
+  /* Category background (light mode) */
+  --ds-cat-soporte-bg:      #EDF5FF;
+  --ds-cat-facturacion-bg:  #F6F2FF;
+  --ds-cat-consulta-bg:     #D9FBFB;
+  --ds-cat-queja-bg:        #FFF1F1;
+  --ds-cat-cancelacion-bg:  #FFF2E8;
+}
+
+/* ---- Dark Mode ---- */
+.dark {
+  --ds-primary-50:  #001D6C;
+  --ds-primary-100: #002D9C;
+  --ds-primary-200: #0043CE;
+  --ds-primary-300: #0353E9;
+  --ds-primary-400: #0F62FE;
+  --ds-primary-500: #4589FF;
+  --ds-primary-600: #78A9FF;
+  --ds-primary-700: #A6C8FF;
+  --ds-primary-800: #D0E2FF;
+  --ds-primary-900: #EDF5FF;
+
+  --ds-neutral-50:  #161616;
+  --ds-neutral-100: #262626;
+  --ds-neutral-200: #393939;
+  --ds-neutral-300: #525252;
+  --ds-neutral-400: #6F6F6F;
+  --ds-neutral-500: #8D8D8D;
+  --ds-neutral-600: #A8A8A8;
+  --ds-neutral-700: #D1D1D6;
+  --ds-neutral-800: #E8E8E8;
+  --ds-neutral-900: #F4F4F4;
+
+  --ds-surface:        #161616;
+  --ds-surface-raised: #1E1E1E;
+  --ds-surface-overlay: rgba(0, 0, 0, 0.7);
+  --ds-border:         #393939;
+  --ds-text-primary:   #F4F4F4;
+  --ds-text-secondary: #C6C6C6;
+  --ds-text-muted:     #6F6F6F;
+
+  --ds-cat-soporte:      #4589FF;
+  --ds-cat-facturacion:  #A56EFF;
+  --ds-cat-consulta:     #08BDBA;
+  --ds-cat-queja:        #FF8389;
+  --ds-cat-cancelacion:  #FF832B;
+
+  --ds-cat-soporte-bg:      rgba(69, 137, 255, 0.15);
+  --ds-cat-facturacion-bg:  rgba(165, 110, 255, 0.15);
+  --ds-cat-consulta-bg:     rgba(8, 189, 186, 0.15);
+  --ds-cat-queja-bg:        rgba(255, 131, 137, 0.15);
+  --ds-cat-cancelacion-bg:  rgba(255, 131, 43, 0.15);
+}
