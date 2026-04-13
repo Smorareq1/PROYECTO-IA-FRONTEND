@@ -56,6 +56,16 @@ const trendText = computed(() => {
   overflow: hidden;
 }
 
+:global(.dark .stat-card) {
+  background: #18181B;
+  border-color: #27272A;
+}
+
+:global(.dark .stat-card:hover) {
+  border-color: #3F3F46;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
 .stat-card::before {
   content: '';
   position: absolute;

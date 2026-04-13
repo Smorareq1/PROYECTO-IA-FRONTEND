@@ -41,8 +41,9 @@ const router = useRouter()
   background: rgba(255, 255, 255, 0.85);
 }
 
-:global(.dark) .topbar {
-  background: rgba(22, 22, 22, 0.85);
+:global(.dark .topbar) {
+  background: rgba(9, 9, 11, 0.9);
+  border-bottom-color: #27272A;
 }
 
 .topbar__inner {

@@ -34,10 +34,22 @@ const { isDark, toggleDark } = useTheme()
   transition: all 0.2s ease;
 }
 
+:global(.dark .theme-toggle) {
+  background: #18181B;
+  border-color: #27272A;
+  color: #A1A1AA;
+}
+
 .theme-toggle:hover {
   background: var(--ds-neutral-100);
   color: var(--ds-text-primary);
   border-color: var(--ds-neutral-300);
+}
+
+:global(.dark .theme-toggle:hover) {
+  background: #27272A;
+  border-color: #3F3F46;
+  color: #FAFAFA;
 }
 
 .theme-toggle:active {
