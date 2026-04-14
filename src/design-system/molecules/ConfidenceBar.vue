@@ -96,6 +96,10 @@ const sortedConfidences = computed(() => {
   overflow: hidden;
 }
 
+:global(.dark .confidence-bars__track) {
+  background: #27272A;
+}
+
 .confidence-bars__fill {
   height: 100%;
   border-radius: var(--ds-radius-full);

@@ -6,6 +6,8 @@
 :root {
   /* ---- Primary (IBM Blue scale) ---- */
   --ds-primary-50:  #EDF5FF;
+
+  color-scheme: light dark;
   --ds-primary-100: #D0E2FF;
   --ds-primary-200: #A6C8FF;
   --ds-primary-300: #78A9FF;
@@ -58,47 +60,53 @@
   --ds-cat-cancelacion-bg:  #FFF2E8;
 }
 
-/* ---- Dark Mode ---- */
-.dark {
-  --ds-primary-50:  #001D6C;
-  --ds-primary-100: #002D9C;
-  --ds-primary-200: #0043CE;
-  --ds-primary-300: #0353E9;
-  --ds-primary-400: #0F62FE;
-  --ds-primary-500: #4589FF;
-  --ds-primary-600: #78A9FF;
-  --ds-primary-700: #A6C8FF;
-  --ds-primary-800: #D0E2FF;
-  --ds-primary-900: #EDF5FF;
+/* ---- Dark Mode (zinc-inspired, high contrast) ---- */
+html.dark {
 
-  --ds-neutral-50:  #161616;
-  --ds-neutral-100: #262626;
-  --ds-neutral-200: #393939;
-  --ds-neutral-300: #525252;
-  --ds-neutral-400: #6F6F6F;
-  --ds-neutral-500: #8D8D8D;
-  --ds-neutral-600: #A8A8A8;
-  --ds-neutral-700: #D1D1D6;
-  --ds-neutral-800: #E8E8E8;
-  --ds-neutral-900: #F4F4F4;
+  --ds-primary-50:  #172554;
+  --ds-primary-100: #1E3A5F;
+  --ds-primary-200: #1E40AF;
+  --ds-primary-300: #2563EB;
+  --ds-primary-400: #3B82F6;
+  --ds-primary-500: #60A5FA;
+  --ds-primary-600: #93C5FD;
+  --ds-primary-700: #BFDBFE;
+  --ds-primary-800: #DBEAFE;
+  --ds-primary-900: #EFF6FF;
 
-  --ds-surface:        #161616;
-  --ds-surface-raised: #1E1E1E;
-  --ds-surface-overlay: rgba(0, 0, 0, 0.7);
-  --ds-border:         #393939;
-  --ds-text-primary:   #F4F4F4;
-  --ds-text-secondary: #C6C6C6;
-  --ds-text-muted:     #6F6F6F;
+  --ds-neutral-50:  #18181B;
+  --ds-neutral-100: #27272A;
+  --ds-neutral-200: #3F3F46;
+  --ds-neutral-300: #52525B;
+  --ds-neutral-400: #71717A;
+  --ds-neutral-500: #A1A1AA;
+  --ds-neutral-600: #D4D4D8;
+  --ds-neutral-700: #E4E4E7;
+  --ds-neutral-800: #F4F4F5;
+  --ds-neutral-900: #FAFAFA;
 
-  --ds-cat-soporte:      #4589FF;
-  --ds-cat-facturacion:  #A56EFF;
-  --ds-cat-consulta:     #08BDBA;
-  --ds-cat-queja:        #FF8389;
-  --ds-cat-cancelacion:  #FF832B;
+  --ds-surface:        #09090B;
+  --ds-surface-raised: #18181B;
+  --ds-surface-overlay: rgba(0, 0, 0, 0.8);
+  --ds-border:         #27272A;
+  --ds-text-primary:   #FAFAFA;
+  --ds-text-secondary: #A1A1AA;
+  --ds-text-muted:     #71717A;
 
-  --ds-cat-soporte-bg:      rgba(69, 137, 255, 0.15);
-  --ds-cat-facturacion-bg:  rgba(165, 110, 255, 0.15);
-  --ds-cat-consulta-bg:     rgba(8, 189, 186, 0.15);
-  --ds-cat-queja-bg:        rgba(255, 131, 137, 0.15);
-  --ds-cat-cancelacion-bg:  rgba(255, 131, 43, 0.15);
+  --ds-success:  #4ADE80;
+  --ds-warning:  #FACC15;
+  --ds-danger:   #F87171;
+  --ds-info:     #60A5FA;
+
+  --ds-cat-soporte:      #60A5FA;
+  --ds-cat-facturacion:  #A78BFA;
+  --ds-cat-consulta:     #2DD4BF;
+  --ds-cat-queja:        #FB7185;
+  --ds-cat-cancelacion:  #FB923C;
+
+  --ds-cat-soporte-bg:      rgba(96, 165, 250, 0.15);
+  --ds-cat-facturacion-bg:  rgba(167, 139, 250, 0.15);
+  --ds-cat-consulta-bg:     rgba(45, 212, 191, 0.15);
+  --ds-cat-queja-bg:        rgba(251, 113, 133, 0.15);
+  --ds-cat-cancelacion-bg:  rgba(251, 146, 60, 0.15);
 }
