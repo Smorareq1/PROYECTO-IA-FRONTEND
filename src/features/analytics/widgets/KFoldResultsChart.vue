@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
+import { SVGRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
 import {
   GridComponent,
@@ -14,7 +14,7 @@ import VChart from 'vue-echarts'
 import type { KFoldReport } from '../models/kfold'
 import { useTheme } from '@/core/composables/useTheme'
 
-use([CanvasRenderer, LineChart, GridComponent, TooltipComponent, LegendComponent, MarkLineComponent, MarkAreaComponent])
+use([SVGRenderer, LineChart, GridComponent, TooltipComponent, LegendComponent, MarkLineComponent, MarkAreaComponent])
 
 const props = defineProps<{ data: KFoldReport }>()
 const { isDark } = useTheme()
@@ -88,8 +88,8 @@ const option = computed(() => ({
   },
   yAxis: {
     type: 'value',
-    min: 0.5,
-    max: 1,
+    min: (value: { min: number }) => Math.max(0, value.min - 0.05),
+    max: (value: { max: number }) => Math.min(1, value.max + 0.02),
     axisLine: { show: false },
     axisTick: { show: false },
     splitLine: { lineStyle: { color: gridLine.value, type: 'solid' } },
@@ -105,29 +105,24 @@ const option = computed(() => ({
       name: 'Accuracy',
       type: 'line',
       data: props.data.folds.map(f => f.accuracy),
-      smooth: false,
+      smooth: true,
       symbol: 'circle',
-      symbolSize: 14,
+      symbolSize: 8,
       showSymbol: true,
       lineStyle: { color: PRIMARY, width: 3 },
       itemStyle: {
         color: PRIMARY,
         borderColor: isDark.value ? '#0F0F11' : '#FFFFFF',
-        borderWidth: 3,
+        borderWidth: 2,
       },
       label: {
         show: true,
         position: 'top',
-        distance: 10,
+        distance: 8,
         color: PRIMARY,
-        fontSize: 11,
-        fontWeight: 800,
+        fontSize: 10,
+        fontWeight: 700,
         fontFamily: 'ui-monospace, SFMono-Regular, monospace',
-        backgroundColor: isDark.value ? '#18181B' : '#FFFFFF',
-        borderColor: PRIMARY,
-        borderWidth: 1,
-        borderRadius: 3,
-        padding: [3, 6],
         formatter: (p: { value: number }) => `${(p.value * 100).toFixed(1)}%`,
       },
       emphasis: {
@@ -164,29 +159,24 @@ const option = computed(() => ({
       name: 'Macro F1',
       type: 'line',
       data: props.data.folds.map(f => f.macro_f1),
-      smooth: false,
+      smooth: true,
       symbol: 'rect',
-      symbolSize: 12,
+      symbolSize: 8,
       showSymbol: true,
       lineStyle: { color: SECONDARY, width: 3 },
       itemStyle: {
         color: SECONDARY,
         borderColor: isDark.value ? '#0F0F11' : '#FFFFFF',
-        borderWidth: 3,
+        borderWidth: 2,
       },
       label: {
         show: true,
         position: 'bottom',
-        distance: 10,
+        distance: 8,
         color: SECONDARY,
-        fontSize: 11,
-        fontWeight: 800,
+        fontSize: 10,
+        fontWeight: 700,
         fontFamily: 'ui-monospace, SFMono-Regular, monospace',
-        backgroundColor: isDark.value ? '#18181B' : '#FFFFFF',
-        borderColor: SECONDARY,
-        borderWidth: 1,
-        borderRadius: 3,
-        padding: [3, 6],
         formatter: (p: { value: number }) => `${(p.value * 100).toFixed(1)}%`,
       },
       emphasis: {
@@ -225,7 +215,7 @@ const option = computed(() => ({
 
 <template>
   <div class="kfold-chart">
-    <VChart :option="option" autoresize style="height: 300px;" />
+    <VChart :option="option" autoresize :init-options="{ renderer: 'svg' }" style="height: 300px;" />
   </div>
 </template>
 

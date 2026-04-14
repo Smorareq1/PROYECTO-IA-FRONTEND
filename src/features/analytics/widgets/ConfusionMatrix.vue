@@ -23,17 +23,32 @@ const shortLabels = computed(() =>
 )
 
 const heatmapData = computed(() => {
-  const rows: { value: [number, number, number]; itemStyle?: object }[] = []
+  const rows: { value: [number, number, number]; itemStyle?: object; label?: object }[] = []
   const n = props.data.labels.length
+  
+  // Calculate max here to avoid dependency cycle if we used maxVal directly
+  const localMax = Math.max(1, ...props.data.matrix.flat())
+
   props.data.matrix.forEach((row, i) => {
     row.forEach((val, j) => {
       const yFlipped = n - 1 - i
       const isDiagonal = i === j
+      const ratio = val / localMax
+      
+      const textColor = isDark.value 
+        ? '#FFFFFF' 
+        : (ratio > 0.4 ? '#FFFFFF' : '#0A0A0A')
+
       rows.push({
         value: [j, yFlipped, val],
         itemStyle: isDiagonal
           ? { borderColor: isDark.value ? '#60A5FA' : '#0F62FE', borderWidth: 2 }
           : undefined,
+        label: {
+          color: textColor,
+          textBorderColor: 'transparent',
+          textBorderWidth: 0
+        }
       })
     })
   })
@@ -146,15 +161,6 @@ const option = computed(() => ({
         const val = p.data.value[2]
         return val === 0 ? '·' : String(val)
       },
-      color: (p: { data: { value: [number, number, number] } }) => {
-        const val = p.data.value[2]
-        const ratio = val / (maxVal.value || 1)
-        // In dark mode: always white — contrast is fine against the dark palette
-        if (isDark.value) return '#FFFFFF'
-        // In light mode: pure black below 40% of max, pure white above
-        return ratio > 0.4 ? '#FFFFFF' : '#0A0A0A'
-      },
-      textBorderColor: 'transparent',
       textShadowBlur: 0,
     },
     itemStyle: {
