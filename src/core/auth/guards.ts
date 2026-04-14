@@ -31,19 +31,17 @@ export function requireRole(...roles: Role[]) {
       return
     }
 
-    // Role check is done in the global beforeEach via the auth store
-    // This is a placeholder — the actual check happens in middleware.ts
-    const storedUser = localStorage.getItem('ticket_ai_user')
-    if (storedUser) {
-      try {
-        const user = JSON.parse(storedUser) as { role: Role }
-        if (roles.includes(user.role)) {
-          next()
-          return
-        }
-      } catch {
-        // Invalid stored user
+    // Pinia persist stores the auth store under key 'auth' as { user: { role, ... } }
+    try {
+      const raw = localStorage.getItem('auth')
+      const stored = raw ? (JSON.parse(raw) as { user?: { role?: Role } }) : null
+      const role = stored?.user?.role
+      if (role && roles.includes(role)) {
+        next()
+        return
       }
+    } catch {
+      // Malformed stored state — fall through to 403
     }
 
     next({ path: '/app/403' })

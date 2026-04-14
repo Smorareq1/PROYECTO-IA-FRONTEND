@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import AppLogo from '@/design-system/components/AppLogo.vue'
-import ThemeToggle from './components/ThemeToggle.vue'
-import TopBar from './components/TopBar.vue'
-
+import TopBar from '@/design-system/molecules/TopBar.vue'
 </script>
 
 <template>

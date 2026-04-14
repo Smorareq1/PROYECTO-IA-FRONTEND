@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { animEl } from '@/core/composables/useMotionAnimate'
-import AppLogo from '@/design-system/components/AppLogo.vue'
-import ThemeToggle from '@/design-system/layouts/components/ThemeToggle.vue'
+import AppLogo from '@/design-system/atoms/AppLogo.vue'
+import ThemeToggle from '@/design-system/atoms/ThemeToggle.vue'
 import HeroSection from '../widgets/HeroSection.vue'
 import FeaturesGrid from '../widgets/FeaturesGrid.vue'
 import TechStackStrip from '../widgets/TechStackStrip.vue'

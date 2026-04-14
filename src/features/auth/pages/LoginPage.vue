@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { LogIn, Mail, Lock, Eye, EyeOff } from 'lucide-vue-next'
 import { animList, stagger } from '@/core/composables/useMotionAnimate'
-import ThemeToggle from '@/design-system/layouts/components/ThemeToggle.vue'
+import ThemeToggle from '@/design-system/atoms/ThemeToggle.vue'
+import { useLogin } from '../composables/useLogin'
 
-const router = useRouter()
+const { login, errorMessage, isLoading } = useLogin()
 
 const email        = ref('')
 const password     = ref('')
 const showPassword = ref(false)
-const isLoading    = ref(false)
-const errorMessage = ref('')
 
 const pageRef = ref<HTMLElement>()
 
@@ -31,33 +29,11 @@ onMounted(() => {
 })
 
 async function handleLogin() {
-  errorMessage.value = ''
-
   if (!email.value || !password.value) {
     errorMessage.value = 'Por favor ingresa tu email y contraseña.'
     return
   }
-
-  isLoading.value = true
-
-  try {
-    await new Promise(resolve => setTimeout(resolve, 1000))
-
-    localStorage.setItem('ticket_ai_access_token', 'demo-token')
-    localStorage.setItem('ticket_ai_refresh_token', 'demo-refresh')
-    localStorage.setItem('ticket_ai_user', JSON.stringify({
-      id: '1',
-      email: email.value,
-      full_name: 'Usuario Demo',
-      role: 'admin',
-    }))
-
-    router.push('/app')
-  } catch {
-    errorMessage.value = 'Credenciales incorrectas. Intenta de nuevo.'
-  } finally {
-    isLoading.value = false
-  }
+  await login({ email: email.value, password: password.value })
 }
 </script>
 
