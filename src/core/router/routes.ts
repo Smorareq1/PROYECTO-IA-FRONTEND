@@ -3,7 +3,7 @@ import { landingRoutes } from '@/features/landing/routes'
 import { authRoutes } from '@/features/auth/routes'
 import { ticketRoutes } from '@/features/tickets/routes'
 import { classifierRoutes } from '@/features/classifier/routes'
-import { analyticsRoutes } from '@/features/analytics/routes'
+import { metricsRoutes } from '@/features/metrics/routes'
 
 export const routes: RouteRecordRaw[] = [
   ...landingRoutes,
@@ -28,7 +28,7 @@ export const routes: RouteRecordRaw[] = [
       },
       ...ticketRoutes,
       ...classifierRoutes,
-      ...analyticsRoutes,
+      ...metricsRoutes,
       {
         path: '403',
         name: 'unauthorized',

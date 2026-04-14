@@ -2,9 +2,9 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { ModelMetrics, ConfusionMatrix, ModelInfo } from '../models/metrics'
 import type { KFoldReport } from '../models/kfold'
-import { getModelInfo, getMetrics, getConfusionMatrix, getKFolds } from '../services/analytics.service'
+import { getModelInfo, getMetrics, getConfusionMatrix, getKFolds } from '../services/metrics.service'
 
-export const useAnalyticsStore = defineStore('analytics', () => {
+export const useMetricsStore = defineStore('metrics', () => {
   const modelInfo = ref<ModelInfo | null>(null)
   const metrics = ref<ModelMetrics | null>(null)
   const confusionMatrix = ref<ConfusionMatrix | null>(null)

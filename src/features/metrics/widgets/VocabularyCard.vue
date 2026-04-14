@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import type { Category } from '@/core/config/constants'
 import { CATEGORIES, CATEGORY_LABELS } from '@/core/config/constants'
 import type { TopWord } from '../models/metrics'
-import { getTopWords } from '../services/analytics.service'
+import { getTopWords } from '../services/metrics.service'
 import { handleError } from '@/core/errors/handler'
 
 const selected = ref<Category>('soporte_tecnico')

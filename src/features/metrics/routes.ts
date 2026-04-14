@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { requireAuth, requireRole } from '@/core/auth/guards'
 
-export const analyticsRoutes: RouteRecordRaw[] = [
+export const metricsRoutes: RouteRecordRaw[] = [
   {
     path: 'dashboard',
     name: 'dashboard',

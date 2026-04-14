@@ -1,5 +1,5 @@
 import { delay } from '@/mockupdata'
-import { MOCK_TOP_WORDS } from '@/mockupdata/data/analytics.data'
+import { MOCK_TOP_WORDS } from '@/mockupdata/data/metrics.data'
 import type { Prediction } from '@/features/classifier/models/prediction'
 import type { Category } from '@/core/config/constants'
 import { CATEGORIES } from '@/core/config/constants'
