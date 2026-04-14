@@ -32,38 +32,70 @@ const { metrics, confusionMatrix, kfolds, modelInfo, isLoading, error } = useMod
     <template v-else-if="metrics">
       <div class="dashboard-sections">
         <!-- KPI cards -->
-        <MetricsOverview :metrics="metrics" :model-info="modelInfo" />
+        <section>
+          <header class="section-head">
+            <span class="section-head__num">01</span>
+            <div>
+              <h2 class="section-head__title">Métricas clave</h2>
+              <p class="section-head__hint">Rendimiento global del modelo.</p>
+            </div>
+          </header>
+          <MetricsOverview :metrics="metrics" :model-info="modelInfo" />
+        </section>
 
         <!-- Confusion matrix + distribution -->
-        <div class="dashboard-row">
-          <div class="dashboard-col-main">
-            <p class="section-label">Matriz de Confusión</p>
-            <ConfusionMatrix v-if="confusionMatrix" :data="confusionMatrix" />
+        <section>
+          <header class="section-head">
+            <span class="section-head__num">02</span>
+            <div>
+              <h2 class="section-head__title">Matriz de Confusión y Distribución</h2>
+              <p class="section-head__hint">Errores de clasificación y balance del dataset.</p>
+            </div>
+          </header>
+          <div class="dashboard-row">
+            <div class="dashboard-col-main">
+              <ConfusionMatrix v-if="confusionMatrix" :data="confusionMatrix" />
+            </div>
+            <div class="dashboard-col-side">
+              <CategoryDistribution :metrics="metrics.per_class" />
+            </div>
           </div>
-          <div class="dashboard-col-side">
-            <p class="section-label">Distribución del Dataset</p>
-            <CategoryDistribution :metrics="metrics.per_class" />
-          </div>
-        </div>
+        </section>
 
         <!-- Per-class table -->
-        <div>
-          <p class="section-label">Métricas por Clase</p>
+        <section>
+          <header class="section-head">
+            <span class="section-head__num">03</span>
+            <div>
+              <h2 class="section-head__title">Métricas por Clase</h2>
+              <p class="section-head__hint">Precision, Recall y F1 para cada categoría.</p>
+            </div>
+          </header>
           <PerClassMetricsTable :metrics="metrics.per_class" />
-        </div>
+        </section>
 
         <!-- K-Fold -->
-        <div v-if="kfolds">
-          <p class="section-label">Resultados K-Fold Cross-Validation</p>
+        <section v-if="kfolds">
+          <header class="section-head">
+            <span class="section-head__num">04</span>
+            <div>
+              <h2 class="section-head__title">K-Fold Cross-Validation</h2>
+              <p class="section-head__hint">Estabilidad del modelo a través de los folds.</p>
+            </div>
+          </header>
           <KFoldResultsChart :data="kfolds" />
-        </div>
+        </section>
       </div>
     </template>
   </div>
 </template>
 
 <style scoped>
-.dashboard-sections { display: flex; flex-direction: column; gap: 28px; }
+.dashboard-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
 
 .dashboard-skeleton { display: flex; flex-direction: column; gap: 16px; }
 
@@ -81,14 +113,48 @@ const { metrics, confusionMatrix, kfolds, modelInfo, isLoading, error } = useMod
   align-items: start;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .dashboard-row { grid-template-columns: 1fr; }
 }
 
-.section-label {
-  font-size: var(--ds-text-sm);
-  font-weight: 600;
-  color: var(--ds-text-secondary);
-  margin-bottom: 10px;
+/* ── Section header (editorial, numbered) ───────────── */
+.section-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.section-head__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 3px;
+  background: var(--ds-text-primary);
+  color: var(--ds-surface);
+  font-family: var(--ds-font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.section-head__title {
+  font-size: var(--ds-text-base);
+  font-weight: 700;
+  color: var(--ds-text-primary);
+  letter-spacing: -0.01em;
+  margin: 0 0 2px;
+  line-height: 1.2;
+}
+
+.section-head__hint {
+  font-size: var(--ds-text-xs);
+  color: var(--ds-text-muted);
+  margin: 0;
+  line-height: 1.4;
 }
 </style>

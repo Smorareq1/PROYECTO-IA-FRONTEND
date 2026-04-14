@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { animEl, animList, stagger } from '@/core/composables/useMotionAnimate'
-import { ArrowRight, BrainCircuit, Sparkles, Zap, Activity } from 'lucide-vue-next'
+import { ArrowRight, BrainCircuit, Sparkles, Activity } from 'lucide-vue-next'
 
 const heroRef   = ref<HTMLElement>()
 const badgeRef  = ref<HTMLElement>()
@@ -53,11 +53,19 @@ onMounted(() => {
 
 <template>
   <section class="hero" ref="heroRef">
-    <!-- Background -->
+    <!-- Background: editorial geometric shapes (solid, no gradients) -->
     <div class="hero__bg" aria-hidden="true">
-      <div class="hero__grid"></div>
-      <div class="hero__glow hero__glow--1"></div>
-      <div class="hero__glow hero__glow--2"></div>
+      <div class="hero__dots"></div>
+      <div class="hero__shape hero__shape--circle"></div>
+      <div class="hero__shape hero__shape--circle-sm"></div>
+      <div class="hero__shape hero__shape--square"></div>
+      <div class="hero__shape hero__shape--square-sm"></div>
+      <div class="hero__shape hero__shape--block"></div>
+      <div class="hero__shape hero__shape--block-outline"></div>
+      <div class="hero__shape hero__shape--triangle"></div>
+      <div class="hero__shape hero__shape--line"></div>
+      <div class="hero__shape hero__shape--line-v"></div>
+      <div class="hero__shape hero__shape--plus"></div>
     </div>
 
     <!-- Left: Content -->
@@ -166,15 +174,6 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- Floating pills -->
-      <div class="hero__float hero__float--1" aria-hidden="true">
-        <Zap :size="12" />
-        <span>Tiempo real</span>
-      </div>
-      <div class="hero__float hero__float--2" aria-hidden="true">
-        <Sparkles :size="12" />
-        <span>NLP</span>
-      </div>
     </div>
   </section>
 </template>
@@ -201,56 +200,171 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.hero__grid {
+/* Dotted pattern — calm, editorial, no gradient mask */
+.hero__dots {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(var(--ds-neutral-100) 1px, transparent 1px),
-    linear-gradient(90deg, var(--ds-neutral-100) 1px, transparent 1px);
-  background-size: 56px 56px;
-  opacity: 0.6;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+  background-image: radial-gradient(var(--ds-neutral-200) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.45;
 }
 
-:global(.dark .hero__grid) {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+:global(.dark .hero__dots) {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  opacity: 0.6;
+}
+
+/* Solid geometric shapes — Swiss / editorial style */
+.hero__shape {
+  position: absolute;
+}
+
+/* Outlined circle — bottom-right, cropped */
+.hero__shape--circle {
+  width: 420px;
+  height: 420px;
+  border: 1.5px solid var(--ds-primary-500);
+  border-radius: 50%;
+  right: -140px;
+  bottom: -160px;
+  opacity: 0.22;
+}
+
+:global(.dark .hero__shape--circle) { opacity: 0.35; }
+
+/* Outlined square, rotated — top-right */
+.hero__shape--square {
+  width: 180px;
+  height: 180px;
+  border: 1.5px solid var(--ds-neutral-300);
+  top: 48px;
+  right: 8%;
+  transform: rotate(12deg);
+  opacity: 0.55;
+}
+
+:global(.dark .hero__shape--square) {
+  border-color: var(--ds-neutral-200);
+  opacity: 0.45;
+}
+
+/* Solid block — far top-left, away from badge */
+.hero__shape--block {
+  width: 56px;
+  height: 56px;
+  background: var(--ds-primary-500);
+  top: 40px;
+  left: -28px;
+  opacity: 0.9;
+}
+
+/* Outlined block — bottom-left accent */
+.hero__shape--block-outline {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--ds-primary-500);
+  bottom: 72px;
+  left: 6%;
+  opacity: 0.45;
+  transform: rotate(-8deg);
+}
+
+/* Smaller outlined circle — top-center */
+.hero__shape--circle-sm {
+  width: 120px;
+  height: 120px;
+  border: 1.5px solid var(--ds-neutral-300);
+  border-radius: 50%;
+  top: -40px;
+  left: 42%;
+  opacity: 0.4;
+}
+
+:global(.dark .hero__shape--circle-sm) {
+  border-color: var(--ds-neutral-200);
+  opacity: 0.3;
+}
+
+/* Small rotated square — mid area */
+.hero__shape--square-sm {
+  width: 64px;
+  height: 64px;
+  border: 1.5px solid var(--ds-neutral-300);
+  bottom: 18%;
+  right: 38%;
+  transform: rotate(-14deg);
+  opacity: 0.45;
+}
+
+:global(.dark .hero__shape--square-sm) {
+  border-color: var(--ds-neutral-200);
+  opacity: 0.35;
+}
+
+/* Outlined triangle — mid-right area, editorial accent */
+.hero__shape--triangle {
+  width: 0;
+  height: 0;
+  border-left: 38px solid transparent;
+  border-right: 38px solid transparent;
+  border-bottom: 64px solid var(--ds-primary-500);
+  top: 58%;
+  left: 30%;
+  opacity: 0.18;
+  transform: rotate(18deg);
+}
+
+:global(.dark .hero__shape--triangle) { opacity: 0.28; }
+
+/* Hard horizontal rule — mid-left */
+.hero__shape--line {
+  width: 96px;
+  height: 3px;
+  background: var(--ds-text-primary);
+  bottom: 22%;
+  left: 44%;
+}
+
+/* Vertical rule — right side */
+.hero__shape--line-v {
+  width: 3px;
+  height: 72px;
+  background: var(--ds-primary-500);
+  top: 30%;
+  right: 4%;
+  opacity: 0.7;
+}
+
+/* Plus mark — bottom-right accent */
+.hero__shape--plus {
+  width: 24px;
+  height: 24px;
+  top: 14%;
+  left: 55%;
   opacity: 0.5;
 }
 
-.hero__glow {
+.hero__shape--plus::before,
+.hero__shape--plus::after {
+  content: '';
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
+  background: var(--ds-text-primary);
 }
 
-.hero__glow--1 {
-  width: 580px;
-  height: 580px;
-  background: var(--ds-primary-500);
-  opacity: 0.12;
-  top: -180px;
-  right: -80px;
-  animation: floatSlow 9s ease-in-out infinite;
+.hero__shape--plus::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
 }
 
-.hero__glow--2 {
-  width: 360px;
-  height: 360px;
-  background: #8A3FFC;
-  opacity: 0.1;
-  bottom: -80px;
-  left: -40px;
-  animation: floatSlow 11s ease-in-out infinite reverse;
-}
-
-:global(.dark .hero__glow--1) { opacity: 0.18; }
-:global(.dark .hero__glow--2) { opacity: 0.14; }
-
-@keyframes floatSlow {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(16px, -16px); }
+.hero__shape--plus::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
 }
 
 /* ── Content ─────────────────────────────────────────────── */
@@ -290,10 +404,21 @@ onMounted(() => {
 }
 
 .hero__title-accent {
-  background: linear-gradient(135deg, var(--ds-primary-500) 0%, #8A3FFC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--ds-primary-500);
+  position: relative;
+  display: inline-block;
+}
+
+/* Solid underscore accent — editorial, no gradient */
+.hero__title-accent::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.05em;
+  height: 0.12em;
+  background: var(--ds-primary-500);
+  opacity: 0.18;
 }
 
 .hero__description {
@@ -339,7 +464,7 @@ onMounted(() => {
 .hero__btn--primary:active { transform: translateY(0); }
 
 .hero__btn--secondary {
-  background: transparent;
+  background: var(--ds-surface);
   color: var(--ds-text-secondary);
   border: 1px solid var(--ds-border);
 }
@@ -403,9 +528,8 @@ onMounted(() => {
   background: #1C1C1F;
   border-color: #2E2E33;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.1),
-    0 8px 40px rgba(0,0,0,0.7),
-    0 0 80px -20px rgba(96, 165, 250, 0.15);
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 8px 40px rgba(0,0,0,0.6);
 }
 
 .hero__card-header {
@@ -586,48 +710,6 @@ onMounted(() => {
 .hero__bar-fill--consulta    { background: var(--ds-cat-consulta); }
 .hero__bar-fill--queja       { background: var(--ds-cat-queja); }
 
-/* ── Floating pills ──────────────────────────────────────── */
-.hero__float {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 13px;
-  background: var(--ds-surface);
-  border: 1px solid var(--ds-border);
-  border-radius: var(--ds-radius-lg);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  font-size: var(--ds-text-xs);
-  font-weight: 600;
-  color: var(--ds-text-primary);
-  pointer-events: none;
-}
-
-:global(.dark .hero__float) {
-  background: #1C1C1F;
-  border-color: #2E2E33;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
-}
-
-.hero__float svg { color: var(--ds-primary-500); }
-
-.hero__float--1 {
-  top: -14px;
-  right: 32px;
-  animation: float 3.2s ease-in-out infinite;
-}
-
-.hero__float--2 {
-  bottom: 20px;
-  left: -24px;
-  animation: float 4s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
-}
-
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .hero {
@@ -656,10 +738,6 @@ onMounted(() => {
     font-size: 2rem;
   }
 
-  .hero__float {
-    display: none;
-  }
-
   .hero__stats {
     flex-wrap: wrap;
     gap: 16px;
@@ -675,10 +753,6 @@ onMounted(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__glow--1,
-  .hero__glow--2,
-  .hero__float--1,
-  .hero__float--2,
   .hero__card-live svg {
     animation: none;
   }

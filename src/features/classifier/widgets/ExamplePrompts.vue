@@ -15,7 +15,6 @@ const examples: Record<Category, string> = {
 
 <template>
   <div class="examples">
-    <p class="examples__label">Ejemplos por categoría</p>
     <div class="examples__chips">
       <button
         v-for="(text, cat) in examples"
@@ -23,43 +22,64 @@ const examples: Record<Category, string> = {
         class="examples__chip"
         :class="`examples__chip--${cat}`"
         @click="emit('select', text)"
+        :title="text"
       >
-        {{ CATEGORY_LABELS[cat as Category] }}
+        <span class="examples__chip-dot"></span>
+        <span class="examples__chip-label">{{ CATEGORY_LABELS[cat as Category] }}</span>
       </button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.examples__label {
-  font-size: var(--ds-text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ds-text-muted);
-  margin-bottom: 10px;
+.examples__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-
-.examples__chips { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .examples__chip {
   display: inline-flex;
-  height: 30px;
-  padding: 0 12px;
-  border-radius: var(--ds-radius-full);
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: var(--ds-radius-sm);
   font-size: var(--ds-text-xs);
   font-weight: 600;
   font-family: var(--ds-font-sans);
+  background: var(--ds-surface);
+  color: var(--ds-text-primary);
+  border: 1px solid var(--ds-border);
   cursor: pointer;
-  border: 1px solid transparent;
-  transition: all 0.15s;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.examples__chip--soporte_tecnico  { color: var(--ds-cat-soporte);      background: var(--ds-cat-soporte-bg);      border-color: var(--ds-cat-soporte); }
-.examples__chip--facturacion      { color: var(--ds-cat-facturacion);   background: var(--ds-cat-facturacion-bg);  border-color: var(--ds-cat-facturacion); }
-.examples__chip--consulta_general { color: var(--ds-cat-consulta);      background: var(--ds-cat-consulta-bg);     border-color: var(--ds-cat-consulta); }
-.examples__chip--queja            { color: var(--ds-cat-queja);         background: var(--ds-cat-queja-bg);        border-color: var(--ds-cat-queja); }
-.examples__chip--cancelacion      { color: var(--ds-cat-cancelacion);   background: var(--ds-cat-cancelacion-bg);  border-color: var(--ds-cat-cancelacion); }
+:global(.dark .examples__chip) {
+  background: #18181B;
+  border-color: #27272A;
+}
 
-.examples__chip:hover { filter: brightness(0.92); }
+.examples__chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.examples__chip-label { letter-spacing: 0.01em; }
+
+.examples__chip--soporte_tecnico  .examples__chip-dot { background: var(--ds-cat-soporte); }
+.examples__chip--facturacion      .examples__chip-dot { background: var(--ds-cat-facturacion); }
+.examples__chip--consulta_general .examples__chip-dot { background: var(--ds-cat-consulta); }
+.examples__chip--queja            .examples__chip-dot { background: var(--ds-cat-queja); }
+.examples__chip--cancelacion      .examples__chip-dot { background: var(--ds-cat-cancelacion); }
+
+.examples__chip--soporte_tecnico:hover  { border-color: var(--ds-cat-soporte);      box-shadow: 0 2px 0 var(--ds-cat-soporte);      transform: translateY(-1px); }
+.examples__chip--facturacion:hover      { border-color: var(--ds-cat-facturacion);   box-shadow: 0 2px 0 var(--ds-cat-facturacion);   transform: translateY(-1px); }
+.examples__chip--consulta_general:hover { border-color: var(--ds-cat-consulta);      box-shadow: 0 2px 0 var(--ds-cat-consulta);      transform: translateY(-1px); }
+.examples__chip--queja:hover            { border-color: var(--ds-cat-queja);         box-shadow: 0 2px 0 var(--ds-cat-queja);         transform: translateY(-1px); }
+.examples__chip--cancelacion:hover      { border-color: var(--ds-cat-cancelacion);   box-shadow: 0 2px 0 var(--ds-cat-cancelacion);   transform: translateY(-1px); }
+
+.examples__chip:active { transform: translateY(0); box-shadow: none; }
 </style>

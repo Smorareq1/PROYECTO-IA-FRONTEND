@@ -155,12 +155,12 @@ onMounted(() => {
   position: relative;
   padding: 28px 24px 24px;
   border: 1px solid var(--ds-border);
-  border-radius: var(--ds-radius-xl);
+  border-radius: var(--ds-radius-md);
   background: var(--ds-surface);
   overflow: hidden;
   cursor: default;
   opacity: 0;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 :global(.dark .feature-card) {
@@ -169,14 +169,14 @@ onMounted(() => {
 }
 
 .feature-card:hover {
-  border-color: color-mix(in srgb, var(--accent) 50%, var(--ds-border));
-  box-shadow: 0 8px 32px color-mix(in srgb, var(--accent) 12%, transparent);
-  transform: translateY(-4px);
+  border-color: var(--ds-text-primary);
+  box-shadow: 0 2px 0 var(--ds-text-primary);
+  transform: translateY(-2px);
 }
 
 :global(.dark .feature-card:hover) {
-  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
-  box-shadow: 0 8px 32px color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: var(--ds-neutral-200);
+  box-shadow: 0 2px 0 var(--ds-neutral-200);
 }
 
 /* Top accent line — grows on hover */
@@ -185,7 +185,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
@@ -209,14 +209,22 @@ onMounted(() => {
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: var(--ds-radius-lg);
-  background: color-mix(in srgb, var(--accent) 12%, var(--ds-surface-raised));
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-surface-raised);
+  border: 1px solid var(--ds-border);
   color: var(--accent);
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+:global(.dark .feature-card__icon-wrap) {
+  background: #0F0F11;
+  border-color: #27272A;
 }
 
 .feature-card:hover .feature-card__icon-wrap {
-  background: color-mix(in srgb, var(--accent) 20%, var(--ds-surface-raised));
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
 }
 
 .feature-card__tag {

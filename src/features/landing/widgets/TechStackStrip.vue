@@ -103,14 +103,14 @@ onMounted(() => {
   align-items: center;
   gap: 6px;
   padding: 5px 12px;
-  border-radius: var(--ds-radius-full);
+  border-radius: var(--ds-radius-sm);
   background: var(--ds-surface);
   border: 1px solid var(--ds-border);
   font-size: var(--ds-text-xs);
   font-weight: 500;
   color: var(--ds-text-secondary);
   cursor: default;
-  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 :global(.dark .tech-strip) {
@@ -131,8 +131,7 @@ onMounted(() => {
 .tech-strip__item:hover {
   border-color: var(--item-color);
   color: var(--item-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--item-color) 20%, transparent);
+  transform: translateY(-1px);
 }
 
 .tech-strip__name {
