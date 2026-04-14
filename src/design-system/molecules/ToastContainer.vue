@@ -70,6 +70,12 @@ function getIcon(type: Toast['type']) {
   overflow: hidden;
 }
 
+:global(.dark .toast) {
+  background: #1C1C1F;
+  border-color: #27272A;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
 .toast::before {
   content: '';
   position: absolute;
@@ -129,6 +135,10 @@ function getIcon(type: Toast['type']) {
 .toast__close:hover {
   background: var(--ds-neutral-100);
   color: var(--ds-text-primary);
+}
+
+:global(.dark .toast__close:hover) {
+  background: #27272A;
 }
 
 /* Transitions */

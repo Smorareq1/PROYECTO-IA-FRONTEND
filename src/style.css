@@ -9,6 +9,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---- Global overrides (outside @layer for max specificity) ---- */
+html,
+body {
+  background-color: var(--ds-surface);
+  color: var(--ds-text-primary);
+}
+
+
+
+body {
+  font-family: var(--ds-font-sans);
+  font-size: 16px;
+  line-height: var(--ds-leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-height: 100vh;
+}
+
 /* ---- Base Styles ---- */
 @layer base {
   *,
@@ -17,22 +37,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-
-  html {
-    font-family: var(--ds-font-sans);
-    font-size: 16px;
-    line-height: var(--ds-leading-normal);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
-
-  body {
-    background-color: var(--ds-surface);
-    color: var(--ds-text-primary);
-    transition: background-color 0.2s ease, color 0.2s ease;
-    min-height: 100vh;
   }
 
   ::selection {
