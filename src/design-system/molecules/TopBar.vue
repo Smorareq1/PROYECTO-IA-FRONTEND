@@ -1,40 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRouter, RouterLink } from 'vue-router'
-import { LogIn } from 'lucide-vue-next'
-import { storeToRefs } from 'pinia'
+import { RouterLink } from 'vue-router'
 import AppLogo from '@/design-system/atoms/AppLogo.vue'
 import ThemeToggle from '@/design-system/atoms/ThemeToggle.vue'
-import UserMenu from './UserMenu.vue'
-import { useAuthStore } from '@/core/stores/auth.store'
 
-const { isAuthenticated, isAdmin, isAgent, isClient } = storeToRefs(useAuthStore())
-
-interface NavItem { label: string; to: string }
-
-const navItems = computed<NavItem[]>(() => {
-  if (isAdmin.value) {
-    return [
-      { label: 'Cola', to: '/app/cola' },
-      { label: 'Playground', to: '/app/playground' },
-      { label: 'Dashboard', to: '/app/dashboard' },
-      { label: 'Modelo', to: '/app/modelo' },
-    ]
-  }
-  if (isAgent.value) {
-    return [
-      { label: 'Cola', to: '/app/cola' },
-      { label: 'Playground', to: '/app/playground' },
-    ]
-  }
-  if (isClient.value) {
-    return [
-      { label: 'Nuevo Ticket', to: '/app/nuevo-ticket' },
-      { label: 'Mis Tickets', to: '/app/mis-tickets' },
-    ]
-  }
-  return []
-})
+const navItems = [
+  { label: 'Cola', to: '/app/cola' },
+  { label: 'Playground', to: '/app/playground' },
+  { label: 'Dashboard', to: '/app/dashboard' },
+]
 </script>
 
 <template>
@@ -44,7 +17,7 @@ const navItems = computed<NavItem[]>(() => {
         <AppLogo />
       </div>
 
-      <nav v-if="isAuthenticated && navItems.length" class="topbar__nav">
+      <nav class="topbar__nav">
         <RouterLink
           v-for="item in navItems"
           :key="item.to"
@@ -58,11 +31,6 @@ const navItems = computed<NavItem[]>(() => {
 
       <div class="topbar__right">
         <ThemeToggle />
-        <UserMenu v-if="isAuthenticated" />
-        <router-link v-else to="/login" class="topbar__login-btn">
-          <LogIn :size="16" />
-          <span>Iniciar sesión</span>
-        </router-link>
       </div>
     </div>
   </header>
@@ -136,26 +104,8 @@ const navItems = computed<NavItem[]>(() => {
   gap: 10px;
 }
 
-.topbar__login-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  height: 34px;
-  padding: 0 14px;
-  border-radius: var(--ds-radius-md);
-  background: var(--ds-primary-500);
-  color: #fff;
-  font-size: var(--ds-text-sm);
-  font-weight: 500;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.topbar__login-btn:hover { background: var(--ds-primary-700); }
-
 @media (max-width: 768px) {
   .topbar__inner { padding: 0 16px; }
   .topbar__nav { display: none; }
-  .topbar__login-btn span { display: none; }
 }
 </style>

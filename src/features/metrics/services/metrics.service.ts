@@ -3,7 +3,7 @@ import type { ModelMetrics, ConfusionMatrix, ModelInfo, TopWord } from '../model
 import type { KFoldReport } from '../models/kfold'
 import type { Category } from '@/core/config/constants'
 import { USE_MOCK } from '@/mockupdata'
-import * as mock from '@/mockupdata/services/analytics.mock'
+import * as mock from '@/mockupdata/services/metrics.mock'
 
 export async function getModelInfo(): Promise<ModelInfo> {
   if (USE_MOCK) return mock.getModelInfo()

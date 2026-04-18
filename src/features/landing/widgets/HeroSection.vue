@@ -86,7 +86,7 @@ onMounted(() => {
       </p>
 
       <div class="hero__actions" ref="actionsRef">
-        <router-link to="/login" class="hero__btn hero__btn--primary">
+        <router-link to="/app/dashboard" class="hero__btn hero__btn--primary">
           <span>Comenzar ahora</span>
           <ArrowRight :size="16" />
         </router-link>

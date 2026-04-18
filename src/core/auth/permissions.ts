@@ -20,7 +20,7 @@ export const PERMISSIONS: Record<Role, string[]> = {
     'ticket:delete',
     'ticket:assign',
     'classifier:use',
-    'analytics:read',
+    'metrics:read',
     'model:read',
     'user:manage',
   ],

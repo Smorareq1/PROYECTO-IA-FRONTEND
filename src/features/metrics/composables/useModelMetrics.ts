@@ -1,9 +1,9 @@
 import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useAnalyticsStore } from '../stores/analytics.store'
+import { useMetricsStore } from '../stores/metrics.store'
 
 export function useModelMetrics() {
-  const store = useAnalyticsStore()
+  const store = useMetricsStore()
   const { modelInfo, metrics, confusionMatrix, kfolds, isLoading, error } = storeToRefs(store)
 
   onMounted(() => {

@@ -1,13 +1,11 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { landingRoutes } from '@/features/landing/routes'
-import { authRoutes } from '@/features/auth/routes'
 import { ticketRoutes } from '@/features/tickets/routes'
 import { classifierRoutes } from '@/features/classifier/routes'
-import { analyticsRoutes } from '@/features/analytics/routes'
+import { metricsRoutes } from '@/features/metrics/routes'
 
 export const routes: RouteRecordRaw[] = [
   ...landingRoutes,
-  ...authRoutes,
 
   {
     path: '/app',
@@ -15,20 +13,11 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        redirect: () => {
-          try {
-            const raw = localStorage.getItem('auth')
-            const user = raw ? (JSON.parse(raw) as { user?: { role?: string } }).user : null
-            if (user?.role === 'cliente') return '/app/mis-tickets'
-            if (user?.role === 'agente') return '/app/cola'
-            if (user?.role === 'admin') return '/app/dashboard'
-          } catch { /* empty */ }
-          return '/app/playground'
-        },
+        redirect: '/app/dashboard',
       },
       ...ticketRoutes,
       ...classifierRoutes,
-      ...analyticsRoutes,
+      ...metricsRoutes,
       {
         path: '403',
         name: 'unauthorized',

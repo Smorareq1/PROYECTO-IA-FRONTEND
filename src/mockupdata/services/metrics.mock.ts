@@ -5,9 +5,9 @@ import {
   MOCK_CONFUSION_MATRIX,
   MOCK_KFOLDS,
   MOCK_TOP_WORDS,
-} from '@/mockupdata/data/analytics.data'
-import type { ModelInfo, ModelMetrics, ConfusionMatrix, TopWord } from '@/features/analytics/models/metrics'
-import type { KFoldReport } from '@/features/analytics/models/kfold'
+} from '@/mockupdata/data/metrics.data'
+import type { ModelInfo, ModelMetrics, ConfusionMatrix, TopWord } from '@/features/metrics/models/metrics'
+import type { KFoldReport } from '@/features/metrics/models/kfold'
 import type { Category } from '@/core/config/constants'
 
 export async function getModelInfo(): Promise<ModelInfo> {

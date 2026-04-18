@@ -1,5 +1,5 @@
-import type { ModelInfo, ModelMetrics, ConfusionMatrix, TopWord } from '@/features/analytics/models/metrics'
-import type { KFoldReport } from '@/features/analytics/models/kfold'
+import type { ModelInfo, ModelMetrics, ConfusionMatrix, TopWord } from '@/features/metrics/models/metrics'
+import type { KFoldReport } from '@/features/metrics/models/kfold'
 import type { Category } from '@/core/config/constants'
 
 export const MOCK_MODEL_INFO: ModelInfo = {

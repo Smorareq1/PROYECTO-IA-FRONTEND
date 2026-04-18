@@ -1,19 +1,12 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { requireAuth, requireRole } from '@/core/auth/guards'
 
-export const analyticsRoutes: RouteRecordRaw[] = [
+export const metricsRoutes: RouteRecordRaw[] = [
   {
     path: 'dashboard',
     name: 'dashboard',
     component: () => import('./pages/DashboardPage.vue'),
     beforeEnter: [requireAuth, requireRole('admin')],
     meta: { title: 'Dashboard' },
-  },
-  {
-    path: 'modelo',
-    name: 'model-health',
-    component: () => import('./pages/ModelHealthPage.vue'),
-    beforeEnter: [requireAuth, requireRole('admin')],
-    meta: { title: 'Salud del Modelo' },
   },
 ]
