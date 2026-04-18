@@ -9,11 +9,4 @@ export const metricsRoutes: RouteRecordRaw[] = [
     beforeEnter: [requireAuth, requireRole('admin')],
     meta: { title: 'Dashboard' },
   },
-  {
-    path: 'modelo',
-    name: 'model-health',
-    component: () => import('./pages/ModelHealthPage.vue'),
-    beforeEnter: [requireAuth, requireRole('admin')],
-    meta: { title: 'Salud del Modelo' },
-  },
 ]

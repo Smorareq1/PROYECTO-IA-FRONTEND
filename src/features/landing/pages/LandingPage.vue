@@ -6,7 +6,7 @@ import ThemeToggle from '@/design-system/atoms/ThemeToggle.vue'
 import HeroSection from '../widgets/HeroSection.vue'
 import FeaturesGrid from '../widgets/FeaturesGrid.vue'
 import TechStackStrip from '../widgets/TechStackStrip.vue'
-import { LogIn } from 'lucide-vue-next'
+import { LayoutDashboard } from 'lucide-vue-next'
 
 const navRef = ref<HTMLElement>()
 
@@ -37,9 +37,9 @@ onMounted(() => {
         <AppLogo />
         <div class="landing__nav-right">
           <ThemeToggle />
-          <router-link to="/login" class="landing__login-btn">
-            <LogIn :size="15" aria-hidden="true" />
-            <span>Iniciar sesión</span>
+          <router-link to="/app/dashboard" class="landing__login-btn">
+            <LayoutDashboard :size="15" aria-hidden="true" />
+            <span>Ir al Dashboard</span>
           </router-link>
         </div>
       </div>
