@@ -45,19 +45,31 @@
   --ds-text-secondary: #525252;
   --ds-text-muted:     #8D8D8D;
 
-  /* ---- Category badge colors ---- */
-  --ds-cat-soporte:      #0F62FE;
-  --ds-cat-facturacion:  #8A3FFC;
-  --ds-cat-consulta:     #009D9A;
-  --ds-cat-queja:        #DA1E28;
-  --ds-cat-cancelacion:  #EB6200;
+  /* ---- Category badge colors (11 Bitext dataset categories) ---- */
+  --ds-cat-account:      #0F62FE;
+  --ds-cat-cancel:       #EB6200;
+  --ds-cat-contact:      #009D9A;
+  --ds-cat-delivery:     #A56EFF;
+  --ds-cat-feedback:     #005D5D;
+  --ds-cat-invoice:      #8A3FFC;
+  --ds-cat-order:        #0E6027;
+  --ds-cat-payment:      #B28600;
+  --ds-cat-refund:       #DA1E28;
+  --ds-cat-shipping:     #1192E8;
+  --ds-cat-subscription: #D02670;
 
-  /* Category background (light mode) */
-  --ds-cat-soporte-bg:      #EDF5FF;
-  --ds-cat-facturacion-bg:  #F6F2FF;
-  --ds-cat-consulta-bg:     #D9FBFB;
-  --ds-cat-queja-bg:        #FFF1F1;
-  --ds-cat-cancelacion-bg:  #FFF2E8;
+  /* Category backgrounds (light mode) */
+  --ds-cat-account-bg:      #EDF5FF;
+  --ds-cat-cancel-bg:       #FFF2E8;
+  --ds-cat-contact-bg:      #D9FBFB;
+  --ds-cat-delivery-bg:     #F6F2FF;
+  --ds-cat-feedback-bg:     #D9FBFB;
+  --ds-cat-invoice-bg:      #F6F2FF;
+  --ds-cat-order-bg:        #DEFBE6;
+  --ds-cat-payment-bg:      #FFF8E1;
+  --ds-cat-refund-bg:       #FFF1F1;
+  --ds-cat-shipping-bg:     #E5F6FF;
+  --ds-cat-subscription-bg: #FFF0F7;
 }
 
 /* ---- Dark Mode (zinc-inspired, high contrast) ---- */
@@ -98,15 +110,27 @@ html.dark {
   --ds-danger:   #F87171;
   --ds-info:     #60A5FA;
 
-  --ds-cat-soporte:      #60A5FA;
-  --ds-cat-facturacion:  #A78BFA;
-  --ds-cat-consulta:     #2DD4BF;
-  --ds-cat-queja:        #FB7185;
-  --ds-cat-cancelacion:  #FB923C;
+  --ds-cat-account:      #60A5FA;
+  --ds-cat-cancel:       #FB923C;
+  --ds-cat-contact:      #2DD4BF;
+  --ds-cat-delivery:     #C4B5FD;
+  --ds-cat-feedback:     #5EEAD4;
+  --ds-cat-invoice:      #A78BFA;
+  --ds-cat-order:        #4ADE80;
+  --ds-cat-payment:      #FCD34D;
+  --ds-cat-refund:       #FB7185;
+  --ds-cat-shipping:     #38BDF8;
+  --ds-cat-subscription: #F472B6;
 
-  --ds-cat-soporte-bg:      rgba(96, 165, 250, 0.15);
-  --ds-cat-facturacion-bg:  rgba(167, 139, 250, 0.15);
-  --ds-cat-consulta-bg:     rgba(45, 212, 191, 0.15);
-  --ds-cat-queja-bg:        rgba(251, 113, 133, 0.15);
-  --ds-cat-cancelacion-bg:  rgba(251, 146, 60, 0.15);
+  --ds-cat-account-bg:      rgba(96, 165, 250, 0.15);
+  --ds-cat-cancel-bg:       rgba(251, 146, 60, 0.15);
+  --ds-cat-contact-bg:      rgba(45, 212, 191, 0.15);
+  --ds-cat-delivery-bg:     rgba(196, 181, 253, 0.15);
+  --ds-cat-feedback-bg:     rgba(94, 234, 212, 0.15);
+  --ds-cat-invoice-bg:      rgba(167, 139, 250, 0.15);
+  --ds-cat-order-bg:        rgba(74, 222, 128, 0.15);
+  --ds-cat-payment-bg:      rgba(252, 211, 77, 0.15);
+  --ds-cat-refund-bg:       rgba(251, 113, 133, 0.15);
+  --ds-cat-shipping-bg:     rgba(56, 189, 248, 0.15);
+  --ds-cat-subscription-bg: rgba(244, 114, 182, 0.15);
 }

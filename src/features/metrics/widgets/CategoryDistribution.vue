@@ -9,11 +9,17 @@ const animatedIn = ref(false)
 onMounted(() => { requestAnimationFrame(() => { animatedIn.value = true }) })
 
 const COLORS: Record<string, string> = {
-  soporte_tecnico:  'var(--ds-cat-soporte)',
-  facturacion:      'var(--ds-cat-facturacion)',
-  consulta_general: 'var(--ds-cat-consulta)',
-  queja:            'var(--ds-cat-queja)',
-  cancelacion:      'var(--ds-cat-cancelacion)',
+  ACCOUNT:      'var(--ds-cat-account)',
+  CANCEL:       'var(--ds-cat-cancel)',
+  CONTACT:      'var(--ds-cat-contact)',
+  DELIVERY:     'var(--ds-cat-delivery)',
+  FEEDBACK:     'var(--ds-cat-feedback)',
+  INVOICE:      'var(--ds-cat-invoice)',
+  ORDER:        'var(--ds-cat-order)',
+  PAYMENT:      'var(--ds-cat-payment)',
+  REFUND:       'var(--ds-cat-refund)',
+  SHIPPING:     'var(--ds-cat-shipping)',
+  SUBSCRIPTION: 'var(--ds-cat-subscription)',
 }
 
 const total = computed(() => props.metrics.reduce((sum, m) => sum + m.support, 0))

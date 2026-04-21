@@ -6,7 +6,7 @@ import type { TopWord } from '../models/metrics'
 import { getTopWords } from '../services/metrics.service'
 import { handleError } from '@/core/errors/handler'
 
-const selected = ref<Category>('soporte_tecnico')
+const selected = ref<Category>('ACCOUNT')
 const words = ref<TopWord[]>([])
 const isLoading = ref(false)
 
@@ -128,11 +128,17 @@ watch(selected, loadWords, { immediate: true })
   transition: width 0.4s ease;
 }
 
-.vocab-card__word-fill--soporte_tecnico  { background: var(--ds-cat-soporte); }
-.vocab-card__word-fill--facturacion      { background: var(--ds-cat-facturacion); }
-.vocab-card__word-fill--consulta_general { background: var(--ds-cat-consulta); }
-.vocab-card__word-fill--queja            { background: var(--ds-cat-queja); }
-.vocab-card__word-fill--cancelacion      { background: var(--ds-cat-cancelacion); }
+.vocab-card__word-fill--ACCOUNT      { background: var(--ds-cat-account); }
+.vocab-card__word-fill--CANCEL       { background: var(--ds-cat-cancel); }
+.vocab-card__word-fill--CONTACT      { background: var(--ds-cat-contact); }
+.vocab-card__word-fill--DELIVERY     { background: var(--ds-cat-delivery); }
+.vocab-card__word-fill--FEEDBACK     { background: var(--ds-cat-feedback); }
+.vocab-card__word-fill--INVOICE      { background: var(--ds-cat-invoice); }
+.vocab-card__word-fill--ORDER        { background: var(--ds-cat-order); }
+.vocab-card__word-fill--PAYMENT      { background: var(--ds-cat-payment); }
+.vocab-card__word-fill--REFUND       { background: var(--ds-cat-refund); }
+.vocab-card__word-fill--SHIPPING     { background: var(--ds-cat-shipping); }
+.vocab-card__word-fill--SUBSCRIPTION { background: var(--ds-cat-subscription); }
 
 .vocab-card__word-val {
   font-size: var(--ds-text-xs);

@@ -1,31 +1,50 @@
 /**
  * Application-wide constants
+ * Categories match the Bitext Customer Support dataset (11 classes)
  */
 
 export const CATEGORIES = [
-  'soporte_tecnico',
-  'facturacion',
-  'consulta_general',
-  'queja',
-  'cancelacion',
+  'ACCOUNT',
+  'CANCEL',
+  'CONTACT',
+  'DELIVERY',
+  'FEEDBACK',
+  'INVOICE',
+  'ORDER',
+  'PAYMENT',
+  'REFUND',
+  'SHIPPING',
+  'SUBSCRIPTION',
 ] as const
 
 export type Category = typeof CATEGORIES[number]
 
 export const CATEGORY_LABELS: Record<Category, string> = {
-  soporte_tecnico: 'Soporte Técnico',
-  facturacion: 'Facturación',
-  consulta_general: 'Consulta General',
-  queja: 'Queja',
-  cancelacion: 'Cancelación',
+  ACCOUNT:      'Cuenta',
+  CANCEL:       'Cancelación',
+  CONTACT:      'Contacto',
+  DELIVERY:     'Entrega',
+  FEEDBACK:     'Retroalimentación',
+  INVOICE:      'Facturación',
+  ORDER:        'Órdenes',
+  PAYMENT:      'Pagos',
+  REFUND:       'Reembolsos',
+  SHIPPING:     'Envíos',
+  SUBSCRIPTION: 'Suscripción',
 }
 
 export const CATEGORY_COLORS: Record<Category, { text: string; bg: string; css: string }> = {
-  soporte_tecnico:  { text: 'var(--ds-cat-soporte)',      bg: 'var(--ds-cat-soporte-bg)',      css: 'cat-soporte' },
-  facturacion:      { text: 'var(--ds-cat-facturacion)',   bg: 'var(--ds-cat-facturacion-bg)',  css: 'cat-facturacion' },
-  consulta_general: { text: 'var(--ds-cat-consulta)',      bg: 'var(--ds-cat-consulta-bg)',     css: 'cat-consulta' },
-  queja:            { text: 'var(--ds-cat-queja)',         bg: 'var(--ds-cat-queja-bg)',        css: 'cat-queja' },
-  cancelacion:      { text: 'var(--ds-cat-cancelacion)',   bg: 'var(--ds-cat-cancelacion-bg)',  css: 'cat-cancelacion' },
+  ACCOUNT:      { text: 'var(--ds-cat-account)',      bg: 'var(--ds-cat-account-bg)',      css: 'cat-account' },
+  CANCEL:       { text: 'var(--ds-cat-cancel)',       bg: 'var(--ds-cat-cancel-bg)',       css: 'cat-cancel' },
+  CONTACT:      { text: 'var(--ds-cat-contact)',      bg: 'var(--ds-cat-contact-bg)',      css: 'cat-contact' },
+  DELIVERY:     { text: 'var(--ds-cat-delivery)',     bg: 'var(--ds-cat-delivery-bg)',     css: 'cat-delivery' },
+  FEEDBACK:     { text: 'var(--ds-cat-feedback)',     bg: 'var(--ds-cat-feedback-bg)',     css: 'cat-feedback' },
+  INVOICE:      { text: 'var(--ds-cat-invoice)',      bg: 'var(--ds-cat-invoice-bg)',      css: 'cat-invoice' },
+  ORDER:        { text: 'var(--ds-cat-order)',        bg: 'var(--ds-cat-order-bg)',        css: 'cat-order' },
+  PAYMENT:      { text: 'var(--ds-cat-payment)',      bg: 'var(--ds-cat-payment-bg)',      css: 'cat-payment' },
+  REFUND:       { text: 'var(--ds-cat-refund)',       bg: 'var(--ds-cat-refund-bg)',       css: 'cat-refund' },
+  SHIPPING:     { text: 'var(--ds-cat-shipping)',     bg: 'var(--ds-cat-shipping-bg)',     css: 'cat-shipping' },
+  SUBSCRIPTION: { text: 'var(--ds-cat-subscription)', bg: 'var(--ds-cat-subscription-bg)', css: 'cat-subscription' },
 }
 
 export const TICKET_STATUSES = ['abierto', 'en_progreso', 'resuelto', 'cerrado'] as const

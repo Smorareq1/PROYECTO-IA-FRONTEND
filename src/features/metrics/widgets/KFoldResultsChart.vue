@@ -32,7 +32,7 @@ const option = computed(() => ({
   backgroundColor: 'transparent',
   animation: true,
   animationDuration: 700,
-  animationEasing: 'cubicOut',
+  animationEasing: 'cubicOut' as const,
   tooltip: {
     trigger: 'axis',
     backgroundColor: isDark.value ? '#18181B' : '#FFFFFF',

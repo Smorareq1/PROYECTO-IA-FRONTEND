@@ -7,8 +7,13 @@ import TicketDetailPanel from '../widgets/TicketDetailPanel.vue'
 import type { Ticket } from '../models/ticket'
 import { useTicketList } from '../composables/useTicketList'
 
-const { tickets, isLoading } = useTicketList()
+const { tickets, isLoading, reload } = useTicketList()
 const panelTicket = ref<Ticket | null>(null)
+
+function onDeleted() {
+  panelTicket.value = null
+  reload()
+}
 </script>
 
 <template>
@@ -24,6 +29,7 @@ const panelTicket = ref<Ticket | null>(null)
       v-if="panelTicket"
       :ticket="panelTicket"
       @close="panelTicket = null"
+      @deleted="onDeleted"
     />
   </div>
 </template>

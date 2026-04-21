@@ -4,9 +4,32 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000/api/v1}
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-/api/v1}
         VITE_APP_TITLE: ${VITE_APP_TITLE:-TicketAI — Mesa de Ayuda Inteligente}
     container_name: ticketai-frontend
     ports:
       - "5173:80"
+    depends_on:
+      - backend
     restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ticketai-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/trained_models:/app/trained_models
+      - ticketai-db:/app/db
+    environment:
+      - SECRET_KEY=${SECRET_KEY:-changeme-dev-only}
+      - DATABASE_PATH=/app/db/ticketai.db
+      - MODEL_PATH=/app/trained_models/model.pkl
+      - EVALUATION_PATH=/app/trained_models/evaluation.json
+    restart: unless-stopped
+
+volumes:
+  ticketai-db:
