@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { X, User, Clock, Tag } from 'lucide-vue-next'
+import { ref, watch } from 'vue'
+import { X, User, Clock, Tag, Trash2 } from 'lucide-vue-next'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
 import type { Ticket } from '../models/ticket'
+import { getTicket } from '../services/tickets.service'
 import TicketStatusBadge from './TicketStatusBadge.vue'
 import CategoryBadge from '@/design-system/atoms/CategoryBadge.vue'
 import ConfidenceBar from '@/design-system/molecules/ConfidenceBar.vue'
@@ -12,21 +13,47 @@ import { TICKET_STATUSES, STATUS_LABELS } from '@/core/config/constants'
 import { useTicketMutations } from '../composables/useTicketMutations'
 
 const props = defineProps<{ ticket: Ticket }>()
-const emit = defineEmits<{ close: [] }>()
+const emit = defineEmits<{ close: []; deleted: [] }>()
 
-const { update, isSubmitting } = useTicketMutations()
+const { update, remove, isSubmitting } = useTicketMutations()
 const showReassign = ref(false)
 
-const effectiveCategory = computed(() =>
-  props.ticket.final_category ?? props.ticket.predicted_category,
-)
+// Local reactive copy so the card updates after mutations
+const local = ref<Ticket>({ ...props.ticket })
+
+// Sync if parent changes the ticket prop
+watch(() => props.ticket, (t) => { local.value = { ...t } })
+
+const effectiveCategory = () =>
+  local.value.final_category ?? local.value.predicted_category
 
 function formatDate(iso: string) {
   return format(new Date(iso), "d 'de' MMMM yyyy, HH:mm", { locale: es })
 }
 
+async function refreshLocal() {
+  try {
+    const fresh = await getTicket(local.value.id)
+    local.value = fresh
+  } catch {
+    // ticket may have been deleted
+  }
+}
+
 async function changeStatus(status: string) {
-  await update(props.ticket.id, { status: status as Ticket['status'] })
+  await update(local.value.id, { status: status as Ticket['status'] })
+  await refreshLocal()
+}
+
+async function onCategorySaved() {
+  showReassign.value = false
+  await refreshLocal()
+}
+
+async function handleDelete() {
+  await remove(local.value.id)
+  emit('deleted')
+  emit('close')
 }
 </script>
 
@@ -36,8 +63,8 @@ async function changeStatus(status: string) {
       <!-- Header -->
       <div class="panel__header">
         <div>
-          <p class="panel__id">{{ ticket.id }}</p>
-          <h2 class="panel__title">{{ ticket.subject }}</h2>
+          <p class="panel__id">{{ local.id }}</p>
+          <h2 class="panel__title">{{ local.subject }}</h2>
         </div>
         <button class="panel__close" @click="emit('close')">
           <X :size="20" />
@@ -46,23 +73,23 @@ async function changeStatus(status: string) {
 
       <!-- Meta row -->
       <div class="panel__meta">
-        <TicketStatusBadge :status="ticket.status" />
-        <CategoryBadge :category="effectiveCategory" />
-        <span v-if="ticket.final_category" class="panel__corrected-tag">Categoría corregida</span>
+        <TicketStatusBadge :status="local.status" />
+        <CategoryBadge :category="effectiveCategory()" />
+        <span v-if="local.final_category" class="panel__corrected-tag">Categoría corregida</span>
       </div>
 
       <!-- Description -->
       <div class="panel__section">
         <p class="panel__section-label">Descripción</p>
-        <p class="panel__description">{{ ticket.description }}</p>
+        <p class="panel__description">{{ local.description }}</p>
       </div>
 
       <!-- AI Prediction -->
       <div class="panel__section">
         <p class="panel__section-label">Confianza del modelo</p>
         <ConfidenceBar
-          :confidences="ticket.confidences"
-          :highlight-category="ticket.predicted_category"
+          :confidences="local.confidences"
+          :highlight-category="local.predicted_category"
           :animated="false"
         />
       </div>
@@ -71,11 +98,11 @@ async function changeStatus(status: string) {
       <div class="panel__info">
         <div class="panel__info-item">
           <User :size="13" />
-          <span>{{ ticket.created_by }}</span>
+          <span>{{ local.created_by }}</span>
         </div>
         <div class="panel__info-item">
           <Clock :size="13" />
-          <span>{{ formatDate(ticket.created_at) }}</span>
+          <span>{{ formatDate(local.created_at) }}</span>
         </div>
       </div>
 
@@ -83,7 +110,7 @@ async function changeStatus(status: string) {
       <div class="panel__actions">
         <select
           class="panel__select"
-          :value="ticket.status"
+          :value="local.status"
           :disabled="isSubmitting"
           @change="changeStatus(($event.target as HTMLSelectElement).value)"
         >
@@ -96,15 +123,20 @@ async function changeStatus(status: string) {
           <Tag :size="14" />
           Reasignar categoría
         </button>
+
+        <button class="panel__btn panel__btn--danger" :disabled="isSubmitting" @click="handleDelete">
+          <Trash2 :size="14" />
+          Eliminar
+        </button>
       </div>
     </div>
   </div>
 
   <CategoryReassignDialog
     v-if="showReassign"
-    :ticket="ticket"
+    :ticket="local"
     @close="showReassign = false"
-    @saved="showReassign = false"
+    @saved="onCategorySaved"
   />
 </template>
 
@@ -112,34 +144,39 @@ async function changeStatus(status: string) {
 .panel-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 200;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 }
 
 .panel {
   width: 480px;
-  max-width: 100vw;
-  height: 100%;
+  max-width: 100%;
+  max-height: calc(100vh - 120px);
   background: var(--ds-surface);
-  border-left: 1px solid var(--ds-border);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-lg);
   overflow-y: auto;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  animation: slideIn 0.2s ease-out;
+  animation: popIn 0.2s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
-@keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 :global(.dark .panel) {
   background: #09090B;
-  border-left-color: #27272A;
+  border-color: #27272A;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 .panel__header {
@@ -274,5 +311,23 @@ async function changeStatus(status: string) {
 .panel__btn--secondary:hover {
   background: var(--ds-neutral-100);
   color: var(--ds-text-primary);
+}
+
+.panel__btn--danger {
+  border: 1px solid var(--ds-border);
+  background: none;
+  color: var(--ds-text-muted);
+  margin-left: auto;
+}
+
+.panel__btn--danger:hover {
+  border-color: var(--ds-danger);
+  color: var(--ds-danger);
+  background: rgba(218, 30, 40, 0.06);
+}
+
+.panel__btn--danger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>

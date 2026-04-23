@@ -4,7 +4,7 @@ import { z } from 'zod'
  * Environment variables validated with Zod
  */
 const envSchema = z.object({
-  VITE_API_BASE_URL: z.string().url().default('http://localhost:8000/api/v1'),
+  VITE_API_BASE_URL: z.string().default('/api/v1'),
   VITE_APP_TITLE: z.string().default('TicketAI — Mesa de Ayuda Inteligente'),
   MODE: z.enum(['development', 'production', 'test']).default('development'),
 })

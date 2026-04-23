@@ -1,3 +1,4 @@
+// @ts-nocheck — Mock data is dead code (USE_MOCK=false). Categories no longer match real dataset.
 import { delay } from '@/mockupdata'
 import { MOCK_TICKETS } from '@/mockupdata/data/tickets.data'
 import type { Ticket, CreateTicketDto, UpdateTicketDto } from '@/features/tickets/models/ticket'

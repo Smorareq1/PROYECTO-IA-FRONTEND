@@ -86,7 +86,7 @@ onMounted(() => {
       </p>
 
       <div class="hero__actions" ref="actionsRef">
-        <router-link to="/login" class="hero__btn hero__btn--primary">
+        <router-link to="/app/dashboard" class="hero__btn hero__btn--primary">
           <span>Comenzar ahora</span>
           <ArrowRight :size="16" />
         </router-link>
@@ -97,7 +97,7 @@ onMounted(() => {
 
       <div class="hero__stats" ref="statsRef">
         <div class="hero__stat">
-          <span class="hero__stat-value">5</span>
+          <span class="hero__stat-value">11</span>
           <span class="hero__stat-label">Categorías</span>
         </div>
         <div class="hero__stat-divider"></div>
@@ -137,36 +137,36 @@ onMounted(() => {
 
           <div class="hero__card-result">
             <div class="hero__card-result-header">
-              <span class="hero__card-badge hero__card-badge--facturacion">Facturación</span>
+              <span class="hero__card-badge hero__card-badge--invoice">Facturación</span>
               <span class="hero__card-confidence">94.2%</span>
             </div>
 
             <div class="hero__card-bars">
               <div class="hero__bar">
                 <div class="hero__bar-meta">
-                  <span class="hero__bar-label">Facturación</span>
+                  <span class="hero__bar-label">Invoice</span>
                   <span class="hero__bar-pct">94%</span>
                 </div>
                 <div class="hero__bar-track">
-                  <div class="hero__bar-fill hero__bar-fill--facturacion" ref="bar1Ref" style="width:0%"></div>
+                  <div class="hero__bar-fill hero__bar-fill--invoice" ref="bar1Ref" style="width:0%"></div>
                 </div>
               </div>
               <div class="hero__bar">
                 <div class="hero__bar-meta">
-                  <span class="hero__bar-label">Consulta General</span>
+                  <span class="hero__bar-label">Payment</span>
                   <span class="hero__bar-pct">3%</span>
                 </div>
                 <div class="hero__bar-track">
-                  <div class="hero__bar-fill hero__bar-fill--consulta" ref="bar2Ref" style="width:0%"></div>
+                  <div class="hero__bar-fill hero__bar-fill--payment" ref="bar2Ref" style="width:0%"></div>
                 </div>
               </div>
               <div class="hero__bar">
                 <div class="hero__bar-meta">
-                  <span class="hero__bar-label">Queja</span>
+                  <span class="hero__bar-label">Refund</span>
                   <span class="hero__bar-pct">2%</span>
                 </div>
                 <div class="hero__bar-track">
-                  <div class="hero__bar-fill hero__bar-fill--queja" ref="bar3Ref" style="width:0%"></div>
+                  <div class="hero__bar-fill hero__bar-fill--refund" ref="bar3Ref" style="width:0%"></div>
                 </div>
               </div>
             </div>
@@ -649,9 +649,9 @@ onMounted(() => {
   font-weight: 600;
 }
 
-.hero__card-badge--facturacion {
-  color: var(--ds-cat-facturacion);
-  background: var(--ds-cat-facturacion-bg);
+.hero__card-badge--invoice {
+  color: var(--ds-cat-invoice);
+  background: var(--ds-cat-invoice-bg);
 }
 
 .hero__card-confidence {
@@ -706,9 +706,9 @@ onMounted(() => {
   width: 0%;
 }
 
-.hero__bar-fill--facturacion { background: var(--ds-cat-facturacion); }
-.hero__bar-fill--consulta    { background: var(--ds-cat-consulta); }
-.hero__bar-fill--queja       { background: var(--ds-cat-queja); }
+.hero__bar-fill--invoice { background: var(--ds-cat-invoice); }
+.hero__bar-fill--payment { background: var(--ds-cat-payment); }
+.hero__bar-fill--refund  { background: var(--ds-cat-refund); }
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 1024px) {

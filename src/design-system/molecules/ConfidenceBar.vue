@@ -117,10 +117,16 @@ const sortedConfidences = computed(() => {
   to { width: var(--bar-width); }
 }
 
-/* Category fill colors */
-.confidence-bars__fill--soporte_tecnico  { background: var(--ds-cat-soporte); }
-.confidence-bars__fill--facturacion      { background: var(--ds-cat-facturacion); }
-.confidence-bars__fill--consulta_general { background: var(--ds-cat-consulta); }
-.confidence-bars__fill--queja           { background: var(--ds-cat-queja); }
-.confidence-bars__fill--cancelacion     { background: var(--ds-cat-cancelacion); }
+/* Category fill colors (11 Bitext dataset categories) */
+.confidence-bars__fill--ACCOUNT      { background: var(--ds-cat-account); }
+.confidence-bars__fill--CANCEL       { background: var(--ds-cat-cancel); }
+.confidence-bars__fill--CONTACT      { background: var(--ds-cat-contact); }
+.confidence-bars__fill--DELIVERY     { background: var(--ds-cat-delivery); }
+.confidence-bars__fill--FEEDBACK     { background: var(--ds-cat-feedback); }
+.confidence-bars__fill--INVOICE      { background: var(--ds-cat-invoice); }
+.confidence-bars__fill--ORDER        { background: var(--ds-cat-order); }
+.confidence-bars__fill--PAYMENT      { background: var(--ds-cat-payment); }
+.confidence-bars__fill--REFUND       { background: var(--ds-cat-refund); }
+.confidence-bars__fill--SHIPPING     { background: var(--ds-cat-shipping); }
+.confidence-bars__fill--SUBSCRIPTION { background: var(--ds-cat-subscription); }
 </style>

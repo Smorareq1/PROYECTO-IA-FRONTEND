@@ -10,7 +10,7 @@ import type { Ticket } from '../models/ticket'
 import { useTicketList } from '../composables/useTicketList'
 
 const router = useRouter()
-const { tickets, isLoading, select } = useTicketList()
+const { tickets, isLoading, select, reload } = useTicketList()
 const panelTicket = ref<Ticket | null>(null)
 
 function onSelect(ticket: Ticket) {
@@ -37,6 +37,7 @@ function onSelect(ticket: Ticket) {
       v-if="panelTicket"
       :ticket="panelTicket"
       @close="panelTicket = null"
+      @deleted="() => { panelTicket = null; reload() }"
     />
   </div>
 </template>

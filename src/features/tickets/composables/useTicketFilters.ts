@@ -9,9 +9,14 @@ export function useTicketFilters() {
     store.load()
   }
 
+  function setFilter(key: Parameters<typeof store.setFilter>[0], value: Parameters<typeof store.setFilter>[1]) {
+    store.setFilter(key, value)
+    store.load()
+  }
+
   return {
     filters,
-    setFilter: store.setFilter,
+    setFilter,
     resetFilters: () => { store.resetFilters(); store.load() },
     apply,
   }
