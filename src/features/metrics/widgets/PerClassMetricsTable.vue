@@ -33,16 +33,8 @@ const maxSupport = computed(() =>
   Math.max(...props.metrics.map(m => m.support), 1),
 )
 
-const CAT_CSS_SUFFIX: Record<string, string> = {
-  soporte_tecnico:  'soporte',
-  facturacion:      'facturacion',
-  consulta_general: 'consulta',
-  queja:            'queja',
-  cancelacion:      'cancelacion',
-}
-
 function catColor(cls: string) {
-  return `var(--ds-cat-${CAT_CSS_SUFFIX[cls] ?? cls})`
+  return `var(--ds-cat-${cls.toLowerCase()})`
 }
 
 function pct(v: number) { return `${(v * 100).toFixed(1)}%` }
@@ -250,11 +242,17 @@ function pct(v: number) { return `${(v * 100).toFixed(1)}%` }
   flex-shrink: 0;
 }
 
-.per-class__cat--soporte_tecnico  .per-class__cat-dot { background: var(--ds-cat-soporte); }
-.per-class__cat--facturacion      .per-class__cat-dot { background: var(--ds-cat-facturacion); }
-.per-class__cat--consulta_general .per-class__cat-dot { background: var(--ds-cat-consulta); }
-.per-class__cat--queja            .per-class__cat-dot { background: var(--ds-cat-queja); }
-.per-class__cat--cancelacion      .per-class__cat-dot { background: var(--ds-cat-cancelacion); }
+.per-class__cat--ACCOUNT      .per-class__cat-dot { background: var(--ds-cat-account); }
+.per-class__cat--CANCEL       .per-class__cat-dot { background: var(--ds-cat-cancel); }
+.per-class__cat--CONTACT      .per-class__cat-dot { background: var(--ds-cat-contact); }
+.per-class__cat--DELIVERY     .per-class__cat-dot { background: var(--ds-cat-delivery); }
+.per-class__cat--FEEDBACK     .per-class__cat-dot { background: var(--ds-cat-feedback); }
+.per-class__cat--INVOICE      .per-class__cat-dot { background: var(--ds-cat-invoice); }
+.per-class__cat--ORDER        .per-class__cat-dot { background: var(--ds-cat-order); }
+.per-class__cat--PAYMENT      .per-class__cat-dot { background: var(--ds-cat-payment); }
+.per-class__cat--REFUND       .per-class__cat-dot { background: var(--ds-cat-refund); }
+.per-class__cat--SHIPPING     .per-class__cat-dot { background: var(--ds-cat-shipping); }
+.per-class__cat--SUBSCRIPTION .per-class__cat-dot { background: var(--ds-cat-subscription); }
 
 /* Inline meters */
 .per-class__metric-cell { min-width: 140px; }

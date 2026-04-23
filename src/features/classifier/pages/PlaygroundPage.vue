@@ -159,7 +159,7 @@ watch(result, (r) => { if (r) activeTab.value = 'result' })
             <transition name="pg-fade" mode="out-in">
               <!-- Predicción -->
               <div v-if="result && activeTab === 'result'" key="result" class="pg-panel">
-                <PredictionCard :prediction="result" />
+                <PredictionCard :prediction="result" :text="inputText" />
               </div>
 
               <!-- Tokens -->

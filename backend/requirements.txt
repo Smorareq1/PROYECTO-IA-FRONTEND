@@ -1,0 +1,22 @@
+# Web framework
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+
+# Auth
+pyjwt==2.10.1
+passlib[bcrypt]==1.7.4
+
+# NLP (tokenization & stopwords ONLY — classification is from scratch)
+nltk==3.9.1
+
+# Data handling
+numpy==2.2.5
+pandas==2.2.3
+pyarrow==19.0.1
+
+# Utilities
+python-multipart==0.0.20
+
+# Testing
+pytest==8.3.5
+httpx==0.28.1

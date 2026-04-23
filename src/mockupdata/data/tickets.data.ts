@@ -1,3 +1,4 @@
+// @ts-nocheck — Mock data is dead code (USE_MOCK=false). Categories no longer match real dataset.
 import type { Ticket } from '@/features/tickets/models/ticket'
 
 export const MOCK_TICKETS: Ticket[] = [

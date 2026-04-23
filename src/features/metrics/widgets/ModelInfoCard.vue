@@ -141,9 +141,15 @@ const trainedAt = computed(() =>
   font-weight: 600;
 }
 
-.model-info__cls--soporte_tecnico  { color: var(--ds-cat-soporte);    background: var(--ds-cat-soporte-bg); }
-.model-info__cls--facturacion      { color: var(--ds-cat-facturacion); background: var(--ds-cat-facturacion-bg); }
-.model-info__cls--consulta_general { color: var(--ds-cat-consulta);    background: var(--ds-cat-consulta-bg); }
-.model-info__cls--queja            { color: var(--ds-cat-queja);       background: var(--ds-cat-queja-bg); }
-.model-info__cls--cancelacion      { color: var(--ds-cat-cancelacion); background: var(--ds-cat-cancelacion-bg); }
+.model-info__cls--ACCOUNT      { color: var(--ds-cat-account);      background: var(--ds-cat-account-bg); }
+.model-info__cls--CANCEL       { color: var(--ds-cat-cancel);       background: var(--ds-cat-cancel-bg); }
+.model-info__cls--CONTACT      { color: var(--ds-cat-contact);      background: var(--ds-cat-contact-bg); }
+.model-info__cls--DELIVERY     { color: var(--ds-cat-delivery);     background: var(--ds-cat-delivery-bg); }
+.model-info__cls--FEEDBACK     { color: var(--ds-cat-feedback);     background: var(--ds-cat-feedback-bg); }
+.model-info__cls--INVOICE      { color: var(--ds-cat-invoice);      background: var(--ds-cat-invoice-bg); }
+.model-info__cls--ORDER        { color: var(--ds-cat-order);        background: var(--ds-cat-order-bg); }
+.model-info__cls--PAYMENT      { color: var(--ds-cat-payment);      background: var(--ds-cat-payment-bg); }
+.model-info__cls--REFUND       { color: var(--ds-cat-refund);       background: var(--ds-cat-refund-bg); }
+.model-info__cls--SHIPPING     { color: var(--ds-cat-shipping);     background: var(--ds-cat-shipping-bg); }
+.model-info__cls--SUBSCRIPTION { color: var(--ds-cat-subscription); background: var(--ds-cat-subscription-bg); }
 </style>

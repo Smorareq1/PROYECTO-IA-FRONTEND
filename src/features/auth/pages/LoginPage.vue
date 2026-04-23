@@ -262,7 +262,7 @@ async function handleLogin() {
 /* ── Error ───────────────────────────────────────────────── */
 .login-error {
   padding: 10px 14px;
-  background: var(--ds-cat-queja-bg);
+  background: var(--ds-cat-refund-bg);
   color: var(--ds-danger);
   border: 1px solid rgba(218, 30, 40, 0.2);
   border-radius: var(--ds-radius-md);

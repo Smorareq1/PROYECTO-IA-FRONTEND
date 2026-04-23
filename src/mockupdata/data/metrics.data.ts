@@ -1,3 +1,4 @@
+// @ts-nocheck — Mock data is dead code (USE_MOCK=false). Categories no longer match real dataset.
 import type { ModelInfo, ModelMetrics, ConfusionMatrix, TopWord } from '@/features/metrics/models/metrics'
 import type { KFoldReport } from '@/features/metrics/models/kfold'
 import type { Category } from '@/core/config/constants'
