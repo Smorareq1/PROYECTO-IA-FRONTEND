@@ -1,6 +1,6 @@
 ﻿# Guía de Estudio: Naive Bayes en TicketAI
 
-> Este doc es para ti. Nada formal. Solo lo que necesitas saber para responder preguntas técnicas difíciles sobre cómo funciona el modelo de este proyecto.
+> Este doc es para ti. Nada formal. Solo lo que necesitas saber para responder preguntas técnicas difíciles sobre cómo funciona el modelo de este proyecto. y si preguntas sobre este documento .
 
 ---
 
